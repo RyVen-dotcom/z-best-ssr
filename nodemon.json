@@ -1,0 +1,16 @@
+{
+  "ignore": [
+    ".git",
+    "node_modules",
+    ".gitignore",
+    "src"
+  ],
+  "env": {
+    "NODE_ENV": "development",
+    "CODE_ENV": "development"
+  },
+  "delay": 2500,
+  "ext": "js,ts",
+  "watch": ["server", "lib", "next.config.js"],
+  "exec": "ts-node --project tsconfig.server.json server/index.ts"
+}

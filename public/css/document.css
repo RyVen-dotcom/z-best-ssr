@@ -1,0 +1,13 @@
+body{
+    background-color: #eef3f7;
+    height: 100%;
+    font-family: 'Microsoft Yahei', 'PingFangSC', Arial, sans-serif;
+}
+
+#__next {
+    width: 100%;
+    min-width: 1200px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
