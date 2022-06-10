@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core';
 import HeadCenter from './head-center';
 import WLayout from '../../w-layout/w-layout';
+import NavBar from './nav-bar';
 
 const useStyle = makeStyles(() => ({
   outer: {
@@ -13,6 +14,7 @@ const useStyle = makeStyles(() => ({
     height: 140,
   },
   wrapper: {
+    height: 140,
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'column',
@@ -25,6 +27,7 @@ const HMLayout:React.FC = () => {
     <div className={classes.outer}>
       <WLayout classes={{ wrapper: classes.wrapper, root: classes.root }}>
         <HeadCenter />
+        <NavBar />
       </WLayout>
     </div>
   );

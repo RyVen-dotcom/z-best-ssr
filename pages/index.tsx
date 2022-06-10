@@ -1,7 +1,7 @@
-import type { NextPage } from 'next';
+import React from 'react';
 import VIndex from '../view/index';
 
-const Home: NextPage = () => (
+const Home: React.FC = () => (
   <VIndex />
 );
 
