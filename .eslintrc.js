@@ -24,8 +24,8 @@ module.exports = {
     camelcase: 0, // 允许 下划线api
     'react/require-default-props': 0, // 不对 defaultProps 做强制要求  因为现在都是function组件 直接使用可选参数处理这个问题
     'react/prop-types': 0, // 使用ts 不需要 prop-types 定义类型;
-    'max-len': ['error', 120], // 最大列数不得超过120
-    'max-lines': ['error', 300], // 最大行数不得超过300
+    'max-len': ['error', 150], // 最大列数不得超过120
+    'max-lines': ['error', 450], // 最大行数不得超过300
     'global-require': 0,
     'no-console': 0,
     'linebreak-style': 0, // 忽略换行符 -> git 导致的问题, 不好解决

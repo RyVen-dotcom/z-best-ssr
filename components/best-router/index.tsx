@@ -1,11 +1,10 @@
-import React from "react";
-import HMLayout from "./comp/layout";
+import React from 'react';
+import HMLayout from './comp/layout';
 
-const MyRouter:React.FC = ({children}) => {
-
-  return (<div>
-    <HMLayout/>
+const MyRouter:React.FC = ({ children }) => (
+  <div>
+    <HMLayout />
     {children}
-  </div>)
-}
-export default MyRouter
+  </div>
+);
+export default MyRouter;

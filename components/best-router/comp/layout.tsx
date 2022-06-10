@@ -1,27 +1,32 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core";
-import HeadCenter from "./head-center";
+import React from 'react';
+import { makeStyles } from '@material-ui/core';
+import HeadCenter from './head-center';
+import WLayout from '../../w-layout/w-layout';
 
-const useStyle = makeStyles(()=>({
-  root:{
-    width:'100%',
-    height:140,
+const useStyle = makeStyles(() => ({
+  outer: {
+    height: 140,
   },
-  wrapper:{
-    height:140,
-    backgroundColor:'#fff',
+  root: {
+    width: '100%',
+    backgroundColor: '#fff',
+    height: 140,
+  },
+  wrapper: {
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'column',
-  }
-}))
+  },
+}));
 
 const HMLayout:React.FC = () => {
-  const classes = useStyle()
-  return (<div className={classes.root}>
-    <div className={classes.wrapper}>
-      <HeadCenter/>
+  const classes = useStyle();
+  return (
+    <div className={classes.outer}>
+      <WLayout classes={{ wrapper: classes.wrapper, root: classes.root }}>
+        <HeadCenter />
+      </WLayout>
     </div>
-  </div>)
-}
-export default HMLayout
+  );
+};
+export default HMLayout;
