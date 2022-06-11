@@ -13,11 +13,11 @@ class MyDocument extends Document {
     // noinspection HtmlUnknownTarget
     return (
       <Html lang="en">
+        <title>最家</title>
         <Head>
           <meta httpEquiv="x-ua-compatible" content="IE=11,IE=10,IE=9" />
           <link rel="stylesheet" href="css/document.css" />
           <link rel="stylesheet" href={SWIPER_MIN_CSS} />
-          <title>最家</title>
         </Head>
         <body>
           <Main />

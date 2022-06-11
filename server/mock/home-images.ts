@@ -28,32 +28,32 @@ export const homeImages:HomeImageProps = {
   flower: [
     {
       imgUrl: '/img/flo1.jpg',
-      price: 79,
+      price: 79.00,
       label: '【花艺】七头美丽玫瑰仿真花束',
     },
     {
       imgUrl: '/img/flo2.jpg',
-      price: 79,
+      price: 79.00,
       label: '【花艺】七头美丽玫瑰仿真花束',
     },
     {
       imgUrl: '/img/flo3.jpg',
-      price: 79,
+      price: 79.00,
       label: '【花艺】七头美丽玫瑰仿真花束',
     },
     {
       imgUrl: '/img/flo4.jpg',
-      price: 79,
+      price: 79.00,
       label: '【花艺】七头美丽玫瑰仿真花束',
     },
     {
       imgUrl: '/img/flo5.jpg',
-      price: 79,
+      price: 79.00,
       label: '【花艺】七头美丽玫瑰仿真花束',
     },
     {
       imgUrl: '/img/flo6.jpg',
-      price: 79,
+      price: 79.00,
       label: '【花艺】七头美丽玫瑰仿真花束',
     },
   ],

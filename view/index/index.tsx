@@ -2,6 +2,11 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core';
 import Banner from './comp/banner';
 import { ImgProps } from '../../server/mock/home-images';
+import UniqueList from './comp/unique-list';
+import FlowerList from './comp/flower-list';
+import NordicList from './comp/nordic-list';
+import SpecailList from './comp/specail-list';
+import MidBanner from './comp/mid-banner';
 
 interface VIndexProps {
   uniqueList: Array<ImgProps>,
@@ -12,7 +17,6 @@ interface VIndexProps {
 const useStyle = makeStyles(() => ({
   root: {
     width: '100%',
-    backgroundColor: '#cfcfcf',
   },
 }));
 
@@ -22,13 +26,15 @@ const VIndex:React.FC<VIndexProps> = (props) => {
     flowerList,
     nordicList,
   } = props;
-  console.log(uniqueList);
-  console.log(flowerList);
-  console.log(nordicList);
   const classes = useStyle();
   return (
     <div className={classes.root}>
       <Banner />
+      <UniqueList data={uniqueList} />
+      <SpecailList />
+      <FlowerList data={flowerList} />
+      <MidBanner />
+      <NordicList data={nordicList} />
     </div>
   );
 };

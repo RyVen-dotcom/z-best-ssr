@@ -31,7 +31,7 @@ const useStyle = makeStyles((theme) => ({
     borderTop: '1px solid #bdbdbd',
   },
   bottom: {
-    height: 92,
+    padding: theme.spacing(3.75, 0),
     backgroundColor: theme.palette.common.black,
     display: 'flex',
     alignItems: 'center',
