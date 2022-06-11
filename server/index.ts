@@ -1,12 +1,12 @@
 import next from 'next';
-import api from './src/api'
+import api from './src/api';
 
 const Koa = require('koa');
 const koaBody = require('koa-body');
 
-const app = next({ dev:true, quiet: true });
+const app = next({ dev: true, quiet: true });
 const handle = app.getRequestHandler();
-app.prepare().then(()=>{
+app.prepare().then(() => {
   const server = new Koa();
   server.proxy = true;
   server.use(koaBody({
@@ -28,4 +28,4 @@ app.prepare().then(()=>{
     console.log('http://localhost:8080/');
     console.log('http://192.168.51.29:8080/');
   });
-})
+});

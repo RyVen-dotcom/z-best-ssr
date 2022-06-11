@@ -1,41 +1,61 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
+import clsx from 'clsx';
 
 interface TabProps {
-    labelArr: Array<string>;
-    current?: number;
-    onChange?: ((index: number) => void) | null;
-    classes?: {
-        tabsRoot?: string;
-        tabsContainer?: string;
-        tabsIndicator?: string;
-    };
+  labelArr: Array<string>;
+  current?: number;
+  onChange?: ((index: number) => void) | null;
+  onHover?: ((index?: number) => void) | null;
 }
 
-const useTab = makeStyles(() => ({
-  root: {
-    padding: 0,
-    minWidth: 0,
-    minHeight: 0,
+const useTab = makeStyles((theme) => ({
+  tabBar: {
+    minHeight: 50,
+    borderBottom: `1px solid ${theme.palette.border.light}`,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  tab: {
+    minHeight: 50,
+    marginRight: theme.spacing(5),
+    fontSize: '14px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    cursor: 'pointer',
+    position: 'relative',
+    '&.isSelect': {
+      color: theme.palette.primary.main,
+      '& $tabAfter': {
+        width: '100%',
+      },
+    },
+    '&:hover': {
+      color: theme.palette.primary.main,
+      '& $tabAfter': {
+        width: '100%',
+      },
+    },
+  },
+  tabAfter: {
+    height: 2,
+    width: 0,
+    position: 'absolute',
+    bottom: 0,
+    background: '#bf2522',
+    transitionDuration: '0.2s',
   },
 }));
 
-const a11yProps = (index: number): object => ({
-  id: `simple-tab-${index}`,
-  'aria-controls': `simple-tabpanel-${index}`,
-});
-
-const MyTabs: React.FC<TabProps> = (props) => {
+const MyTabs: React.FC<TabProps> = ({
+  labelArr, current = 0, onChange, onHover,
+}) => {
   const tabClasses = useTab();
-  const {
-    classes, labelArr, current = 0, onChange,
-  } = props;
   const [value, setValue] = React.useState(current);
 
-  // tab切换
-  const handleChange = (event: React.ChangeEvent<object>, newValue: number): void => {
+  const handleClick = (newValue:number):void => {
     if (value === newValue) {
       return;
     }
@@ -44,40 +64,29 @@ const MyTabs: React.FC<TabProps> = (props) => {
       onChange(newValue);
     }
   };
+  const handleMouseIn = (newValue:number):void => {
+    if (typeof onHover === 'function') {
+      onHover(newValue);
+    }
+  };
 
   return (
-    <Tabs
-      value={value}
-      onChange={handleChange}
-      indicatorColor="secondary"
-      textColor="secondary"
-      aria-label="simple tabs example"
-      classes={{
-        root: classes?.tabsRoot,
-        indicator: classes?.tabsIndicator,
-        flexContainer: classes?.tabsContainer,
-      }}
-    >
-      {
-                labelArr.map((item, index) => (
-                  <Tab
-                    key={`ax${item}`}
-                    label={item}
-                    classes={{
-                      root: tabClasses.root,
-                    }}
-                    {...a11yProps(index)}
-                  />
-                ))
-            }
-    </Tabs>
+    <div className={tabClasses.tabBar}>
+      {labelArr.map((item, index) => (
+        <div
+          key={item}
+          tabIndex={0}
+          role="button"
+          className={clsx(tabClasses.tab, { isSelect: value === index })}
+          onClick={() => handleClick(index)}
+          onMouseEnter={() => handleMouseIn(index)}
+        >
+          {item}
+          <div className={tabClasses.tabAfter} />
+        </div>
+      ))}
+    </div>
   );
-};
-
-MyTabs.defaultProps = {
-  current: 0,
-  onChange: null,
-  classes: Object.create(null),
 };
 
 export default MyTabs;

@@ -7,14 +7,15 @@ import NavBar from './nav-bar';
 const useStyle = makeStyles(() => ({
   outer: {
     height: 140,
+    position: 'relative',
+    backgroundColor: '#fff',
   },
   root: {
     width: '100%',
-    backgroundColor: '#fff',
-    height: 140,
+    height: 90,
   },
   wrapper: {
-    height: 140,
+    height: 90,
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'column',
@@ -27,8 +28,8 @@ const HMLayout:React.FC = () => {
     <div className={classes.outer}>
       <WLayout classes={{ wrapper: classes.wrapper, root: classes.root }}>
         <HeadCenter />
-        <NavBar />
       </WLayout>
+      <NavBar />
     </div>
   );
 };

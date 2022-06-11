@@ -5,15 +5,8 @@ import Document, {
 import { ServerStyleSheets } from '@material-ui/core';
 import { NextComponentType, RenderPageResult } from 'next/dist/shared/lib/utils';
 
-/* eslint-disable */
-let cleanCSS: { minify: (arg0: string) => { (): any; new(): any; styles: string } };
-if (process.env.NODE_ENV === 'production') {
-  /* eslint-disable global-require */
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const CleanCSS = require('clean-css');
-  cleanCSS = new CleanCSS();
-  /* eslint-enable global-require */
-}
+const SWIPER_MIN_CSS = 'https://unpkg.com/swiper@5.4.5/css/swiper.min.css';
+const SWIPER_MIN_JS = 'https://unpkg.com/swiper@5.4.5/js/swiper.min.js';
 
 class MyDocument extends Document {
   render(): React.ReactElement {
@@ -23,17 +16,19 @@ class MyDocument extends Document {
         <Head>
           <meta httpEquiv="x-ua-compatible" content="IE=11,IE=10,IE=9" />
           <link rel="stylesheet" href="css/document.css" />
+          <link rel="stylesheet" href={SWIPER_MIN_CSS} />
           <title>最家</title>
         </Head>
         <body>
           <Main />
           <NextScript />
+          <script src={SWIPER_MIN_JS} />
         </body>
       </Html>
     );
   }
 }
-/* eslint-disable @typescript-eslint/ban-ts-comment */
+/* eslint-disable */
 MyDocument.getInitialProps = async (ctx: DocumentContext): Promise<DocumentInitialProps> => {
   const sheets = new ServerStyleSheets();
   const originalRenderPage = ctx.renderPage;
@@ -49,9 +44,6 @@ MyDocument.getInitialProps = async (ctx: DocumentContext): Promise<DocumentIniti
   const initialProps = await Document.getInitialProps(ctx);
 
   let css = sheets.toString();
-  if (css && process.env.NODE_ENV === 'production') {
-    css = cleanCSS.minify(css).styles;
-  }
   return {
     ...initialProps,
     styles: [

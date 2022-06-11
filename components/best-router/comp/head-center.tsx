@@ -16,11 +16,11 @@ const useStyle = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'flex-end',
     justifyContent: 'center',
+    fontSize: '14px',
   },
   linkBtn: {
     color: '#262626',
     padding: theme.spacing(0, 1.25),
-    fontSize: '14px',
   },
   line: {
     height: 20,
@@ -29,6 +29,7 @@ const useStyle = makeStyles((theme) => ({
   },
   textRoot: {
     margin: theme.spacing(0, 1.25),
+    fontSize: '14px',
   },
   iconLink: {
     margin: theme.spacing(0, 1.25),
@@ -55,7 +56,7 @@ const HeadCenter:React.FC = () => {
         <MyLink href="/">
           <div className={classes.linkBtn}>注册</div>
         </MyLink>
-        <TextField classes={{ root: classes.textRoot }} label="快捷搜索" placeholder="热门搜索：千花花瓶" />
+        <TextField classes={{ root: classes.textRoot }} label="快捷搜索" placeholder="热门搜索：千花花瓶" size="small" />
         <MyLink href="/" className={classes.iconLink}>
           <img className={classes.icon} src="/img/grzx.png" alt="个人中心.png" />
         </MyLink>
