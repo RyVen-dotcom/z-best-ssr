@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core';
 import WLayout from '../../w-layout/w-layout';
+import MyLink from '../../my-link';
 
 const useStyle = makeStyles((theme) => ({
   outer: {
@@ -9,11 +10,13 @@ const useStyle = makeStyles((theme) => ({
     position: 'fixed',
     top: 0,
     backgroundColor: theme.palette.common.white,
-    height: 80,
     zIndex: 11,
   },
-  root: {
-
+  wrapper: {
+    height: 80,
+    padding: theme.spacing(2.5, 0),
+    display: 'flex',
+    alignItems: 'flex-end',
   },
 }));
 
@@ -27,8 +30,10 @@ const HeadTop:React.FC = () => {
   });
   return (
     <div className={classes.outer} style={{ opacity }}>
-      <WLayout>
-        123
+      <WLayout classes={{ wrapper: classes.wrapper }}>
+        <MyLink href="/">
+          <img src="/img/logo.png" width={142} height={48} alt="home.jpg" />
+        </MyLink>
       </WLayout>
     </div>
   );
