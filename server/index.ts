@@ -23,9 +23,9 @@ app.prepare().then(() => {
     await handle(ctx.req, ctx.res);
     ctx.respond = false;
   });
-  server.listen(8080, () => {
+  server.listen(80, () => {
     console.log('服务器挂着完成... ');
-    console.log('http://localhost:8080/');
-    console.log('http://192.168.51.29:8080/');
+    console.log('http://localhost:80/');
+    console.log('http://192.168.51.29:80/');
   });
 });
