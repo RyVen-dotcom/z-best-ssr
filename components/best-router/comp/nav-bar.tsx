@@ -1,14 +1,35 @@
 import React from 'react';
 import Image from 'next/image';
 import { makeStyles } from '@material-ui/core';
-import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import MyTabs from '../../my-tabs';
 import { getNavGoodsImages } from './service';
 import { NavList } from '../../../server/mock/nav-list';
 import MyLink from '../../my-link';
+import SlideDown from './slide-down';
 
 const labelArr = ['首页', '所有商品', '装饰摆件', '布艺软饰', '墙式壁挂', '蜡意香薰', '创意家居'];
+
+const flowerArr = [
+  {
+    url: '/proList',
+    label: '千花花艺',
+  },
+  {
+    url: '/vase-proList',
+    label: '花瓶花器',
+  },
+];
+const nordicArr = [
+  {
+    url: '/proList',
+    label: '桌布罩件',
+  },
+  {
+    url: '/vase-proList',
+    label: '靠枕靠垫',
+  },
+];
 
 const useStyle = makeStyles((theme) => ({
   root: {
@@ -102,7 +123,7 @@ const NavBar:React.FC = () => {
       />
       {
         value === 1 ? (
-          <div className={clsx(classes.slideDown, classes.goodsNav, { active: value === 1 })}>
+          <SlideDown>
             {
                 navList.map((item) => (
                   <MyLink className={classes.picLink} key={item.label} href="/">
@@ -117,35 +138,37 @@ const NavBar:React.FC = () => {
                   </MyLink>
                 ))
               }
-          </div>
+          </SlideDown>
         ) : null
       }
       {
         value === 2 ? (
-          <div className={clsx(classes.slideDown, classes.goodsNav, { active: value === 2 })}>
+          <SlideDown>
             <div className={classes.navLinkList}>
-              <MyLink href="/proList">
-                <div className={classes.navLink}>千花花艺</div>
-              </MyLink>
-              <MyLink href="/vase-proList">
-                <div className={classes.navLink}>花瓶花器</div>
-              </MyLink>
+              {
+                  flowerArr.map((item) => (
+                    <MyLink href={item.url} key={item.label}>
+                      <div className={classes.navLink}>{item.label}</div>
+                    </MyLink>
+                  ))
+                }
             </div>
-          </div>
+          </SlideDown>
         ) : null
       }
       {
         value === 3 ? (
-          <div className={clsx(classes.slideDown, classes.goodsNav, { active: value === 3 })}>
+          <SlideDown>
             <div className={classes.navLinkList}>
-              <MyLink href="/proList">
-                <div className={classes.navLink}>桌布罩件</div>
-              </MyLink>
-              <MyLink href="/vase-proList">
-                <div className={classes.navLink}>靠枕靠垫</div>
-              </MyLink>
+              {
+                nordicArr.map((item) => (
+                  <MyLink href={item.url} key={item.label}>
+                    <div className={classes.navLink}>{item.label}</div>
+                  </MyLink>
+                ))
+                }
             </div>
-          </div>
+          </SlideDown>
         ) : null
       }
     </div>
