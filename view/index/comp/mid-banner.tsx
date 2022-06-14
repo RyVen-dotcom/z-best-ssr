@@ -1,22 +1,23 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core';
+import WLayout from '../../../components/w-layout/w-layout';
 
 const useStyle = makeStyles(() => ({
   root: {
-    width: '100%',
-    display: 'flex',
+    background: 'url("/img/ib1.jpg")',
+    backgroundSize: '100% 100%',
   },
-  img: {
-    flex: 1,
+  inner: {
+    height: 366,
   },
 }));
 
 const MidBanner:React.FC = () => {
   const classes = useStyle();
   return (
-    <div className={classes.root}>
-      <img className={classes.img} src="/img/ib1.jpg" alt="banner2" />
-    </div>
+    <WLayout classes={{ root: classes.root }}>
+      <div className={classes.inner} />
+    </WLayout>
   );
 };
 export default MidBanner;

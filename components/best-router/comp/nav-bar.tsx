@@ -126,7 +126,7 @@ const NavBar:React.FC = () => {
           <SlideDown>
             {
                 navList.map((item) => (
-                  <MyLink className={classes.picLink} key={item.label} href="/">
+                  <MyLink className={classes.picLink} key={item.label} href={item.url}>
                     <div className={classes.navItem}>
                       <div className={classes.img}>
                         <Image src={item.imageUrl} width={162} height={200} />
