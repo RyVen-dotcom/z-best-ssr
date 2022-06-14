@@ -83,15 +83,15 @@ export const paintImages:PaintProps = {
   ],
   american: [
     {
-      imgUrl: '/img/temp/sec401.jpg',
-      price: 299.90,
-      label: '新中式客厅山水装饰画墙壁挂画 ',
-    }, {
-      imgUrl: '/img/temp/sec402.jpg',
-      price: 299.90,
-      label: '新中式客厅山水装饰画墙壁挂画 ',
-    }, {
       imgUrl: '/img/temp/sec403.jpg',
+      price: 299.90,
+      label: '新中式客厅山水装饰画墙壁挂画 ',
+    }, {
+      imgUrl: '/img/temp/sec404.jpg',
+      price: 299.90,
+      label: '新中式客厅山水装饰画墙壁挂画 ',
+    }, {
+      imgUrl: '/img/temp/sec405.jpg',
       price: 299.90,
       label: '新中式客厅山水装饰画墙壁挂画 ',
     },
