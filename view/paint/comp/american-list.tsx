@@ -2,7 +2,6 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core';
 import { ImgProps } from '../../../server/mock/home-images';
 import MyImg from '../../../components/my-img';
-import MyLink from '../../../components/my-link';
 
 const useStyle = makeStyles((theme) => ({
   title: {
@@ -13,10 +12,12 @@ const useStyle = makeStyles((theme) => ({
   content: {
     display: 'flex',
     flexWrap: 'wrap',
-    justifyContent: 'space-around',
   },
   img: {
+    width: '100%',
     marginBottom: theme.spacing(2.5),
+    display: 'flex',
+    justifyContent: 'space-between',
   },
   paintList: {
     width: '100%',
@@ -56,33 +57,32 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 
-const ModernList:React.FC<{data:Array<ImgProps>}> = ({ data }) => {
+const EuropeanList:React.FC<{data:Array<ImgProps>}> = ({ data }) => {
   const classes = useStyle();
   return (
     <>
       <div className={classes.title}>
-        <img src="/img/temp/tit01.jpg" width={812} height={36} alt="北欧·壁挂" />
+        <img src="/img/temp/tit03.jpg" width={812} height={36} alt="北欧·壁挂" />
       </div>
       <div className={classes.content}>
         <div className={classes.img}>
-          <img src="/img/temp/paint01.jpg" alt="banner" width={1160} height={505} />
+          <img src="/img/temp/sec401.jpg" alt="banner" width={764} height={374} />
+          <img src="/img/temp/sec402.jpg" alt="banner" width={374} height={374} />
         </div>
         <div className={classes.paintList}>
           {
             data.map((item) => (
-              <MyLink href="/proDetail" key={item.imgUrl}>
-                <div className={classes.block}>
-                  <div className={classes.blockImg}>
-                    <MyImg src={item.imgUrl} width={374} height={374} alt={item.label as string} />
-                  </div>
-                  <div className={classes.label}>
-                    {item.label}
-                  </div>
-                  <div className={classes.price}>
-                    {item.price}
-                  </div>
+              <div className={classes.block}>
+                <div className={classes.blockImg}>
+                  <MyImg src={item.imgUrl} width={374} height={374} alt={item.label as string} />
                 </div>
-              </MyLink>
+                <div className={classes.label}>
+                  {item.label}
+                </div>
+                <div className={classes.price}>
+                  {item.price}
+                </div>
+              </div>
             ))
           }
         </div>
@@ -90,4 +90,4 @@ const ModernList:React.FC<{data:Array<ImgProps>}> = ({ data }) => {
     </>
   );
 };
-export default ModernList;
+export default EuropeanList;

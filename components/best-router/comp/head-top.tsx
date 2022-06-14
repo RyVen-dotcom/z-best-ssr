@@ -1,7 +1,7 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core';
-import WLayout from '../../w-layout/w-layout';
+import { makeStyles, TextField } from '@material-ui/core';
 import MyLink from '../../my-link';
+import NavBar from './nav-bar';
 
 const useStyle = makeStyles((theme) => ({
   outer: {
@@ -11,12 +11,21 @@ const useStyle = makeStyles((theme) => ({
     top: 0,
     backgroundColor: theme.palette.common.white,
     zIndex: 11,
-  },
-  wrapper: {
     height: 80,
-    padding: theme.spacing(2.5, 0),
     display: 'flex',
     alignItems: 'flex-end',
+    justifyContent: 'center',
+    minWidth: 880,
+  },
+  img: {
+    position: 'absolute',
+    left: '10%',
+    top: '50%',
+    transform: 'translateY(-50%)',
+  },
+  textRoot: {
+    margin: theme.spacing(0, 1.25, 2.5),
+    fontSize: '14px',
   },
 }));
 
@@ -30,11 +39,13 @@ const HeadTop:React.FC = () => {
   });
   return (
     <div className={classes.outer} style={{ opacity }}>
-      <WLayout classes={{ wrapper: classes.wrapper }}>
-        <MyLink href="/">
+      <MyLink href="/">
+        <div className={classes.img}>
           <img src="/img/logo.png" width={142} height={48} alt="home.jpg" />
-        </MyLink>
-      </WLayout>
+        </div>
+      </MyLink>
+      <NavBar />
+      <TextField classes={{ root: classes.textRoot }} label="快捷搜索" placeholder="热门搜索：千花花瓶" size="small" />
     </div>
   );
 };

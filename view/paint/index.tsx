@@ -4,6 +4,9 @@ import WLayout from '../../components/w-layout/w-layout';
 import MyBread from '../../components/bread-list/my-bread';
 import ModernList from './comp/modern-list';
 import { PaintProps } from '../../server/mock/paint-images';
+import EuropeanList from './comp/european-list';
+import RomanticList from './comp/romantic-list';
+import AmericanList from './comp/american-list';
 
 const useStyle = makeStyles((theme) => ({
   root: {
@@ -40,9 +43,9 @@ const VPaint:React.FC<PaintProps> = (props) => {
       />
       <WLayout classes={{ root: classes.root }}>
         <ModernList data={modern} />
-        <ModernList data={european} />
-        <ModernList data={romantic} />
-        <ModernList data={american} />
+        <EuropeanList data={european} />
+        <RomanticList data={romantic} />
+        <AmericanList data={american} />
       </WLayout>
     </>
   );

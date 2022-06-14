@@ -56,17 +56,19 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 
-const ModernList:React.FC<{data:Array<ImgProps>}> = ({ data }) => {
+const EuropeanList:React.FC<{data:Array<ImgProps>}> = ({ data }) => {
   const classes = useStyle();
   return (
     <>
       <div className={classes.title}>
-        <img src="/img/temp/tit01.jpg" width={812} height={36} alt="北欧·壁挂" />
+        <img src="/img/temp/tit02.jpg" width={812} height={36} alt="北欧·壁挂" />
       </div>
       <div className={classes.content}>
-        <div className={classes.img}>
-          <img src="/img/temp/paint01.jpg" alt="banner" width={1160} height={505} />
-        </div>
+        <MyLink href="/proDetail">
+          <div className={classes.img}>
+            <img src="/img/temp/paint02.jpg" alt="banner" width={1160} height={505} />
+          </div>
+        </MyLink>
         <div className={classes.paintList}>
           {
             data.map((item) => (
@@ -90,4 +92,4 @@ const ModernList:React.FC<{data:Array<ImgProps>}> = ({ data }) => {
     </>
   );
 };
-export default ModernList;
+export default EuropeanList;

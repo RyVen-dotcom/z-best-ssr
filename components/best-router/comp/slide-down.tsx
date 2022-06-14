@@ -26,6 +26,7 @@ const useStyle = makeStyles((theme) => ({
     backgroundColor: '#fff',
     position: 'absolute',
     top: 'calc(100%)',
+    left: 0,
     display: 'flex',
     zIndex: 2,
     overflow: 'hidden',

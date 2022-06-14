@@ -12,11 +12,9 @@ const useStyle = makeStyles((theme) => ({
   },
   content: {
     display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
   },
   img: {
-    marginBottom: theme.spacing(2.5),
+    margin: theme.spacing(0, 0.75),
   },
   paintList: {
     width: '100%',
@@ -56,16 +54,16 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 
-const ModernList:React.FC<{data:Array<ImgProps>}> = ({ data }) => {
+const EuropeanList:React.FC<{data:Array<ImgProps>}> = ({ data }) => {
   const classes = useStyle();
   return (
     <>
       <div className={classes.title}>
-        <img src="/img/temp/tit01.jpg" width={812} height={36} alt="北欧·壁挂" />
+        <img src="/img/temp/tit03.jpg" width={812} height={36} alt="北欧·壁挂" />
       </div>
       <div className={classes.content}>
         <div className={classes.img}>
-          <img src="/img/temp/paint01.jpg" alt="banner" width={1160} height={505} />
+          <img src="/img/temp/sec301.jpg" alt="banner" width={374} height={880} />
         </div>
         <div className={classes.paintList}>
           {
@@ -90,4 +88,4 @@ const ModernList:React.FC<{data:Array<ImgProps>}> = ({ data }) => {
     </>
   );
 };
-export default ModernList;
+export default EuropeanList;
