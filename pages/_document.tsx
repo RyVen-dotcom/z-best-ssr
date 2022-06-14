@@ -5,9 +5,6 @@ import Document, {
 import { ServerStyleSheets } from '@material-ui/core';
 import { NextComponentType, RenderPageResult } from 'next/dist/shared/lib/utils';
 
-const SWIPER_MIN_CSS = 'https://unpkg.com/swiper@5.4.5/css/swiper.min.css';
-const SWIPER_MIN_JS = 'https://unpkg.com/swiper@5.4.5/js/swiper.min.js';
-
 class MyDocument extends Document {
   render(): React.ReactElement {
     // noinspection HtmlUnknownTarget
@@ -17,12 +14,12 @@ class MyDocument extends Document {
         <Head>
           <meta httpEquiv="x-ua-compatible" content="IE=11,IE=10,IE=9" />
           <link rel="stylesheet" href="css/document.css" />
-          <link rel="stylesheet" href={SWIPER_MIN_CSS} />
+          <link rel="stylesheet" href="js/swiper/swiper.min.css" />
         </Head>
         <body>
           <Main />
           <NextScript />
-          <script src={SWIPER_MIN_JS} />
+          <script src="js/swiper/swiper.min.js" />
         </body>
       </Html>
     );

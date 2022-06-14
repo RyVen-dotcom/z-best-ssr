@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core';
 import { ImgProps } from '../../../server/mock/home-images';
 import MyImg from '../../../components/my-img';
+import MyLink from '../../../components/my-link';
 
 const useStyle = makeStyles((theme) => ({
   title: {
@@ -66,23 +67,29 @@ const EuropeanList:React.FC<{data:Array<ImgProps>}> = ({ data }) => {
       </div>
       <div className={classes.content}>
         <div className={classes.img}>
-          <img src="/img/temp/sec401.jpg" alt="banner" width={764} height={374} />
-          <img src="/img/temp/sec402.jpg" alt="banner" width={374} height={374} />
+          <MyLink href="/proDetail">
+            <img src="/img/temp/sec401.jpg" alt="banner" width={764} height={374} />
+          </MyLink>
+          <MyLink href="/proDetail">
+            <img src="/img/temp/sec402.jpg" alt="banner" width={374} height={374} />
+          </MyLink>
         </div>
         <div className={classes.paintList}>
           {
             data.map((item) => (
-              <div className={classes.block}>
-                <div className={classes.blockImg}>
-                  <MyImg src={item.imgUrl} width={374} height={374} alt={item.label as string} />
+              <MyLink href="/proDetail" key={item.imgUrl}>
+                <div className={classes.block}>
+                  <div className={classes.blockImg}>
+                    <MyImg src={item.imgUrl} width={374} height={374} alt={item.label as string} />
+                  </div>
+                  <div className={classes.label}>
+                    {item.label}
+                  </div>
+                  <div className={classes.price}>
+                    {item.price}
+                  </div>
                 </div>
-                <div className={classes.label}>
-                  {item.label}
-                </div>
-                <div className={classes.price}>
-                  {item.price}
-                </div>
-              </div>
+              </MyLink>
             ))
           }
         </div>
