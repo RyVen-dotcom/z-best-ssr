@@ -21,9 +21,7 @@ const MyBread:React.FC<ShtBreadcrumbsProps> = (props) => {
   const classes = useStyle();
   return (
     <WLayout classes={classes}>
-      <div>
-        <BreadList {...rest} />
-      </div>
+      <BreadList {...rest} />
     </WLayout>
   );
 };
