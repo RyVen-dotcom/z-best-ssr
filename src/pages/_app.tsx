@@ -1,5 +1,6 @@
 /* eslint-disable */
 import '../../styles/globals.css';
+import '../../styles/nprogress.css';
 import type { AppProps } from 'next/app';
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from '../../config/theme';
