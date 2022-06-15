@@ -1,8 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core';
-import { ImgProps } from '../../../server/mock/home-images';
-import MyImg from '../../../components/my-img';
-import MyLink from '../../../components/my-link';
+import MyImg from '@components/my-img';
+import MyLink from '@components/my-link';
+import { ImgProps } from '../../../../server/mock/home-images';
 
 const useStyle = makeStyles((theme) => ({
   title: {
@@ -12,9 +12,13 @@ const useStyle = makeStyles((theme) => ({
   },
   content: {
     display: 'flex',
+    flexWrap: 'wrap',
   },
   img: {
-    margin: theme.spacing(0, 0.75),
+    width: '100%',
+    marginBottom: theme.spacing(2.5),
+    display: 'flex',
+    justifyContent: 'space-between',
   },
   paintList: {
     width: '100%',
@@ -63,7 +67,12 @@ const EuropeanList:React.FC<{data:Array<ImgProps>}> = ({ data }) => {
       </div>
       <div className={classes.content}>
         <div className={classes.img}>
-          <img src="/img/temp/sec301.jpg" alt="banner" width={374} height={880} />
+          <MyLink href="/proDetail">
+            <img src="/img/temp/sec401.jpg" alt="banner" width={764} height={374} />
+          </MyLink>
+          <MyLink href="/proDetail">
+            <img src="/img/temp/sec402.jpg" alt="banner" width={374} height={374} />
+          </MyLink>
         </div>
         <div className={classes.paintList}>
           {

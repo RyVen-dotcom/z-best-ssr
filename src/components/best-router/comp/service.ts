@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { NavList } from '../../../server/mock/nav-list';
-import { HomeImageProps } from '../../../server/mock/home-images';
+import { NavList } from '../../../../server/mock/nav-list';
+import { HomeImageProps } from '../../../../server/mock/home-images';
 
 // 获取navBar 图片列表
 export const getNavGoodsImages = () => new Promise<NavList[]>((resolve) => {

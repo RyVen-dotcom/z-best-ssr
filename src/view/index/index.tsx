@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core';
 import Banner from './comp/banner';
-import { ImgProps } from '../../server/mock/home-images';
+import { ImgProps } from '../../../server/mock/home-images';
 import UniqueList from './comp/unique-list';
 import FlowerList from './comp/flower-list';
 import NordicList from './comp/nordic-list';

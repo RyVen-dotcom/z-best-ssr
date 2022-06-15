@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core';
 import { useRouter } from 'next/router';
 import MyTabs from '../../my-tabs';
 import { getNavGoodsImages } from './service';
-import { NavList } from '../../../server/mock/nav-list';
+import { NavList } from '../../../../server/mock/nav-list';
 import MyLink from '../../my-link';
 import SlideDown from './slide-down';
 

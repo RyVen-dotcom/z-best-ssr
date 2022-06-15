@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, makeStyles } from '@material-ui/core';
-import { ImgProps } from '../../../server/mock/home-images';
-import WLayout from '../../../components/w-layout/w-layout';
+import WLayout from '@components/w-layout/w-layout';
+import { ImgProps } from '../../../../server/mock/home-images';
 import SupImg from './sup-img';
 
 const useStyle = makeStyles((theme) => ({

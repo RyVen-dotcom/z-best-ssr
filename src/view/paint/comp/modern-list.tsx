@@ -1,8 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core';
-import { ImgProps } from '../../../server/mock/home-images';
-import MyImg from '../../../components/my-img';
-import MyLink from '../../../components/my-link';
+import MyImg from '@components/my-img';
+import MyLink from '@components/my-link';
+import { ImgProps } from '../../../../server/mock/home-images';
 
 const useStyle = makeStyles((theme) => ({
   title: {

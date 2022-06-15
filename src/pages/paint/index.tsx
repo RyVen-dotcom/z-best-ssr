@@ -1,7 +1,7 @@
 import React from 'react';
 import { GetServerSideProps } from 'next';
 import VPaint from '../../view/paint';
-import { paintImages, PaintProps } from '../../server/mock/paint-images';
+import { paintImages, PaintProps } from '../../../server/mock/paint-images';
 
 const Paint:React.FC<PaintProps> = (props) => (<VPaint {...props} />);
 export default Paint;

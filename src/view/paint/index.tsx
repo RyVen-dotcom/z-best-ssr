@@ -1,9 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core';
-import WLayout from '../../components/w-layout/w-layout';
-import MyBread from '../../components/bread-list/my-bread';
+import WLayout from '@components/w-layout/w-layout';
+import MyBread from '@components/bread-list/my-bread';
 import ModernList from './comp/modern-list';
-import { PaintProps } from '../../server/mock/paint-images';
+import { PaintProps } from '../../../server/mock/paint-images';
 import EuropeanList from './comp/european-list';
 import RomanticList from './comp/romantic-list';
 import AmericanList from './comp/american-list';

@@ -5,19 +5,22 @@
   "scripts": {
     "dev": "nodemon",
     "delete": "rimraf dist-client && rimraf dist-server",
-    "build": "yarn delete && next build && tsc --project tsconfig.server.json",
+    "build": "cross-env ANALYZE=true yarn delete && next build && tsc --project tsconfig.server.json",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@material-ui/core": "4.12.3",
+    "@next/bundle-analyzer": "^12.1.6",
     "@types/react-transition-group": "^4.4.4",
     "ahooks": "3.3.0",
     "axios": "0.19.2",
     "clsx": "1.1.1",
+    "eslint-friendly-formatter": "^4.0.1",
     "next": "11",
     "nodemon": "^2.0.16",
     "npx": "^10.2.2",
+    "pm2": "^5.2.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-redux": "7.2.0"
@@ -28,6 +31,7 @@
     "@types/react-dom": "17.0.14",
     "@typescript-eslint/eslint-plugin": "5.16.0",
     "@typescript-eslint/parser": "5.16.0",
+    "cross-env": "7.0.2",
     "eslint": "8.17.0",
     "eslint-config-airbnb": "19.0.4",
     "eslint-config-airbnb-typescript": "16.1.4",

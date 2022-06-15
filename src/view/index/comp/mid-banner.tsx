@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core';
-import WLayout from '../../../components/w-layout/w-layout';
+import WLayout from '@components/w-layout/w-layout';
 
 const useStyle = makeStyles(() => ({
   root: {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { GetServerSideProps } from 'next';
 import VIndex from '../view/index';
-import { homeImages, ImgProps } from '../server/mock/home-images';
+import { homeImages, ImgProps } from '../../server/mock/home-images';
 
 interface HomeProps {
   uniqueList: Array<ImgProps>,
