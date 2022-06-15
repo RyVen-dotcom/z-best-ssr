@@ -102,8 +102,16 @@ const NavBar:React.FC = () => {
   }, []);
 
   const handleChange = (index:number) => {
-    if (index === 0) {
-      router.push('#').then();
+    switch (index) {
+      case 0:
+        router.push('/#').then();
+        break;
+      case 4:
+        router.push('/paint').then();
+        break;
+      default:
+        router.push('/#').then();
+        break;
     }
   };
   const handleHover = (index?:number) => {
