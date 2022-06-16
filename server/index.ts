@@ -29,7 +29,8 @@ const getIpAddress = () => {
 
 const ipAddress = getIpAddress();
 
-const app = next({ dev: true, quiet: true });
+const dev = process.env.NODE_ENV !== 'production';
+const app = next({ dev, quiet: true });
 const handle = app.getRequestHandler();
 app.prepare().then(() => {
   const server = new Koa();
