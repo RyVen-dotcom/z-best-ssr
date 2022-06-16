@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
-import { makeStyles, TextField } from '@material-ui/core';
+import { ButtonBase, makeStyles, TextField } from '@material-ui/core';
+import { getHomeLogin } from '@components/best-router/comp/service';
 import MyLink from '../../my-link';
 
 const useStyle = makeStyles((theme) => ({
@@ -43,19 +44,25 @@ const useStyle = makeStyles((theme) => ({
 
 const HeadCenter:React.FC = () => {
   const classes = useStyle();
+  const handleLogin = async () => {
+    const res = await getHomeLogin();
+    console.log(res);
+  };
   return (
     <div className={classes.root}>
       <MyLink href="/">
         <Image src="/img/logo.png" width={142} height={50} />
       </MyLink>
       <div className={classes.rightBlock}>
-        <MyLink href="/">
-          <div className={classes.linkBtn}>登录</div>
-        </MyLink>
-        <div className={classes.line} />
-        <MyLink href="/">
-          <div className={classes.linkBtn}>注册</div>
-        </MyLink>
+        <ButtonBase onClick={handleLogin}>
+          <MyLink href="/">
+            <div className={classes.linkBtn}>登录</div>
+          </MyLink>
+          <div className={classes.line} />
+          <MyLink href="/">
+            <div className={classes.linkBtn}>注册</div>
+          </MyLink>
+        </ButtonBase>
         <TextField classes={{ root: classes.textRoot }} label="快捷搜索" placeholder="热门搜索：千花花瓶" size="small" />
         <MyLink href="/" className={classes.iconLink}>
           <img className={classes.icon} src="/img/grzx.png" alt="个人中心.png" />

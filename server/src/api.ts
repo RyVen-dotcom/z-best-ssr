@@ -23,6 +23,28 @@ export default (server:any):void => {
       data: homeImages,
     };
   });
-
+  // 登录
+  router.get('/home/login', async (ctx: any) => {
+    ctx.status = 200;
+    ctx.body = {
+      msg: 'login success',
+      success: 'SUCCESS',
+      data: {
+        userName: '卢本伟',
+        userIcon: '/img/lubenwei.jpg',
+      },
+      status: 200,
+    };
+  });
+  // 登录
+  router.get('/home/logout', async (ctx: any) => {
+    ctx.status = 200;
+    ctx.body = {
+      msg: 'logout success',
+      success: 'SUCCESS',
+      data: null,
+      status: 200,
+    };
+  });
   server.use(router.routes());
 };

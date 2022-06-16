@@ -19,3 +19,11 @@ export const getHomeImages = () => new Promise<HomeImageProps>((resolve) => {
     }
   }).catch(() => null);
 });
+// 登录
+export const getHomeLogin = () => new Promise<HomeImageProps>((resolve) => {
+  axios.get('/home/login').then((res) => {
+    if (res.status === 200) {
+      resolve(res.data.data);
+    }
+  }).catch(() => null);
+});
