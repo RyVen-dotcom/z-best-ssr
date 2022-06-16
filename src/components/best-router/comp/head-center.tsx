@@ -1,7 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Image from 'next/image';
 import { ButtonBase, makeStyles, TextField } from '@material-ui/core';
-import { getHomeLogin } from '@components/best-router/comp/service';
+import { getHomeLogin, getHomeLogout } from '@components/best-router/comp/service';
+import { loginAction, logoutAction } from '@store/user/action';
+import { USER_INFO } from '@store/user/types';
 import MyLink from '../../my-link';
 
 const useStyle = makeStyles((theme) => ({
@@ -40,29 +43,76 @@ const useStyle = makeStyles((theme) => ({
     width: 20,
     height: 20,
   },
+  userInfo: {
+    display: 'flex',
+    alignItems: 'flex-end',
+  },
+  userIcon: {
+    width: 30,
+    height: 30,
+    overflow: 'hidden',
+    borderRadius: 15,
+  },
+  userName: {
+    margin: theme.spacing(0, 1),
+  },
 }));
 
-const HeadCenter:React.FC = () => {
+interface HeadCenterProps {
+  handleLogin: typeof loginAction
+  handleLogout: typeof logoutAction
+  userInfo: USER_INFO
+}
+
+const HeadCenter:React.FC<HeadCenterProps> = (props) => {
+  const { handleLogin, handleLogout, userInfo } = props;
   const classes = useStyle();
-  const handleLogin = async () => {
+
+  const handleSubmit = async () => {
     const res = await getHomeLogin();
-    console.log(res);
+    if (res) {
+      handleLogin({
+        userName: res.userName,
+        userIcon: res.userIcon,
+        isLogin: true,
+      });
+    }
   };
+
+  const handleLogoutSubmit = async () => {
+    await getHomeLogout();
+    handleLogout();
+  };
+
   return (
     <div className={classes.root}>
       <MyLink href="/">
         <Image src="/img/logo.png" width={142} height={50} />
       </MyLink>
       <div className={classes.rightBlock}>
-        <ButtonBase onClick={handleLogin}>
-          <MyLink href="/">
-            <div className={classes.linkBtn}>登录</div>
-          </MyLink>
-          <div className={classes.line} />
-          <MyLink href="/">
-            <div className={classes.linkBtn}>注册</div>
-          </MyLink>
-        </ButtonBase>
+        {
+          userInfo && userInfo.isLogin
+            ? (
+              <div className={classes.userInfo}>
+                <div>欢迎你！</div>
+                <div className={classes.userIcon}>
+                  <img src={userInfo.userIcon} alt="用户头像" width={30} height={30} />
+                </div>
+                <div className={classes.userName}>{userInfo.userName}</div>
+                <div className={classes.line} />
+                <ButtonBase onClick={handleLogoutSubmit}>
+                  <div className={classes.linkBtn}>退出登录</div>
+                </ButtonBase>
+              </div>
+            )
+            : (
+              <ButtonBase onClick={handleSubmit}>
+                <div className={classes.linkBtn}>登录</div>
+                <div className={classes.line} />
+                <div className={classes.linkBtn}>注册</div>
+              </ButtonBase>
+            )
+        }
         <TextField classes={{ root: classes.textRoot }} label="快捷搜索" placeholder="热门搜索：千花花瓶" size="small" />
         <MyLink href="/" className={classes.iconLink}>
           <img className={classes.icon} src="/img/grzx.png" alt="个人中心.png" />
@@ -77,4 +127,12 @@ const HeadCenter:React.FC = () => {
     </div>
   );
 };
-export default HeadCenter;
+
+const mapStateToProps = (state:USER_INFO): USER_INFO | object => ({
+  userInfo: state,
+});
+
+export default connect(mapStateToProps, {
+  handleLogin: loginAction,
+  handleLogout: logoutAction,
+})(HeadCenter);
