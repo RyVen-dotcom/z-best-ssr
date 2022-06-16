@@ -59,9 +59,9 @@ const useStyle = makeStyles((theme) => ({
 }));
 
 interface HeadCenterProps {
-  handleLogin: typeof loginAction
-  handleLogout: typeof logoutAction
-  userInfo: USER_INFO
+  handleLogin?: typeof loginAction
+  handleLogout?: typeof logoutAction
+  userInfo?: USER_INFO
 }
 
 const HeadCenter:React.FC<HeadCenterProps> = (props) => {
@@ -71,17 +71,21 @@ const HeadCenter:React.FC<HeadCenterProps> = (props) => {
   const handleSubmit = async () => {
     const res = await getHomeLogin();
     if (res) {
-      handleLogin({
-        userName: res.userName,
-        userIcon: res.userIcon,
-        isLogin: true,
-      });
+      if (handleLogin) {
+        handleLogin({
+          userName: res.userName,
+          userIcon: res.userIcon,
+          isLogin: true,
+        });
+      }
     }
   };
 
   const handleLogoutSubmit = async () => {
     await getHomeLogout();
-    handleLogout();
+    if (handleLogout) {
+      handleLogout();
+    }
   };
 
   return (
