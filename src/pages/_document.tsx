@@ -13,6 +13,7 @@ class MyDocument extends Document {
         <title>最家</title>
         <Head>
           <meta httpEquiv="x-ua-compatible" content="IE=11,IE=10,IE=9" />
+          <meta name="baidu-site-verification" content="code-z2ZVDam45t" />
           <link rel="stylesheet" href="css/document.css" />
           <link rel="stylesheet" href="js/swiper/swiper.min.css" />
         </Head>
