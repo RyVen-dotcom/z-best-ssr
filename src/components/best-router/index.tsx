@@ -1,9 +1,9 @@
 import React from 'react';
 import NProgress from 'nprogress';
 import Router from 'next/router';
-import HMLayout from './comp/layout';
-import GlobalFooter from './comp/global-footer';
 import RightUtilsBtn from './comp/right-utils-btn';
+import GlobalFooter from './comp/global-footer';
+import HMLayout from './comp/layout';
 
 const MyRouter:React.FC = ({ children }) => {
   const startLoading = (): void => {
@@ -50,4 +50,5 @@ const MyRouter:React.FC = ({ children }) => {
     </>
   );
 };
+
 export default MyRouter;

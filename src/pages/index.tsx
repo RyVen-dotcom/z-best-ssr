@@ -15,7 +15,6 @@ const Home: React.FC<HomeProps> = (props) => (
 
 export const getServerSideProps:GetServerSideProps = async () => {
   const res = homeImages;
-
   return {
     props: {
       uniqueList: res.unique,

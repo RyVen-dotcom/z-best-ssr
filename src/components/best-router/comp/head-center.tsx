@@ -1,4 +1,5 @@
 import React from 'react';
+import { message, Modal } from 'antd';
 import { connect } from 'react-redux';
 import Image from 'next/image';
 import { ButtonBase, makeStyles, TextField } from '@material-ui/core';
@@ -25,6 +26,9 @@ const useStyle = makeStyles((theme) => ({
   linkBtn: {
     color: '#262626',
     padding: theme.spacing(0, 1.25),
+    '&:hover': {
+      color: '#a20000',
+    },
   },
   line: {
     height: 20,
@@ -67,6 +71,8 @@ interface HeadCenterProps {
 const HeadCenter:React.FC<HeadCenterProps> = (props) => {
   const { handleLogin, handleLogout, userInfo } = props;
   const classes = useStyle();
+  const [visible, setVisible] = React.useState(false);
+  const [confirmLoading, setConfirmLoading] = React.useState(false);
 
   const handleSubmit = async () => {
     const res = await getHomeLogin();
@@ -78,14 +84,26 @@ const HeadCenter:React.FC<HeadCenterProps> = (props) => {
           isLogin: true,
         });
       }
+      message.success('登录成功！');
     }
   };
+  const handleCancel = () => {
+    setVisible(false);
+  };
 
-  const handleLogoutSubmit = async () => {
+  const handleOk = async () => {
+    setConfirmLoading(true);
     await getHomeLogout();
     if (handleLogout) {
       handleLogout();
     }
+    setConfirmLoading(false);
+    message.success('成功退出登录');
+    handleCancel();
+  };
+
+  const showModal = () => {
+    setVisible(true);
   };
 
   return (
@@ -104,7 +122,7 @@ const HeadCenter:React.FC<HeadCenterProps> = (props) => {
                 </div>
                 <div className={classes.userName}>{userInfo.userName}</div>
                 <div className={classes.line} />
-                <ButtonBase onClick={handleLogoutSubmit}>
+                <ButtonBase onClick={showModal}>
                   <div className={classes.linkBtn}>退出登录</div>
                 </ButtonBase>
               </div>
@@ -128,6 +146,17 @@ const HeadCenter:React.FC<HeadCenterProps> = (props) => {
           <img className={classes.icon} src="/img/gwc.png" alt="购物车.png" />
         </MyLink>
       </div>
+      <Modal
+        title="温馨提示"
+        visible={visible}
+        onOk={handleOk}
+        confirmLoading={confirmLoading}
+        onCancel={handleCancel}
+        okText="确认"
+        cancelText="取消"
+      >
+        <p>是否退出登录？</p>
+      </Modal>
     </div>
   );
 };
