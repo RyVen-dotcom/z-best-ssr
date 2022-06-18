@@ -47,7 +47,7 @@ app.prepare().then(() => {
   const session_config = {
     key: 'test', /**  cookie的key。 (默认是 koa:sess) */
     maxAge: SESSION_MAX_AGE, /**  session 过期时间，以毫秒ms为单位计算 。 */
-    rolling: false, /** 是否每次响应时刷新Session的有效期。(默认是 false) */
+    rolling: true, /** 是否每次响应时刷新Session的有效期。(默认是 false) */
   };
   server.use(session(session_config, server));
 
