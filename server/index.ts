@@ -1,9 +1,10 @@
 import next from 'next';
 import api from './src/api';
-import { PORT } from './config';
+import { PORT, SESSION_MAX_AGE } from './config';
 
 const Koa = require('koa');
 const koaBody = require('koa-body');
+const session = require('koa-session');
 
 const os = require('os');
 
@@ -41,7 +42,17 @@ app.prepare().then(() => {
       keepExtensions: true,
     },
   }));
+
+  server.keys = ['some secret liu']; // 这个是配合signed属性的签名key
+  const session_config = {
+    key: 'test', /**  cookie的key。 (默认是 koa:sess) */
+    maxAge: SESSION_MAX_AGE, /**  session 过期时间，以毫秒ms为单位计算 。 */
+    rolling: false, /** 是否每次响应时刷新Session的有效期。(默认是 false) */
+  };
+  server.use(session(session_config, server));
+
   api(server);
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   server.use(async (ctx: any) => {
     // 把 session 信息传递给 next;

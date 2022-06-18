@@ -1,7 +1,8 @@
 import React from 'react';
 import { GetServerSideProps } from 'next';
+import { getHomeImages } from '@components/best-router/comp/service';
 import VIndex from '../view/index';
-import { homeImages, ImgProps } from '../../server/mock/home-images';
+import { ImgProps } from '../../server/mock/home-images';
 
 interface HomeProps {
   uniqueList: Array<ImgProps>,
@@ -14,7 +15,7 @@ const Home: React.FC<HomeProps> = (props) => (
 );
 
 export const getServerSideProps:GetServerSideProps = async () => {
-  const res = homeImages;
+  const res = await getHomeImages();
   return {
     props: {
       uniqueList: res.unique,

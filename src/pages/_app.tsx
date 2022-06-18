@@ -9,6 +9,7 @@ import theme from '../../config/theme';
 import BestRouter from '@components/best-router';
 
 const MyApp = ({Component, pageProps}: AppProps) => {
+
     return (
         <ThemeProvider theme={theme}>
             <BestRouter>
@@ -20,16 +21,19 @@ const MyApp = ({Component, pageProps}: AppProps) => {
 }
 MyApp.getInitialProps = wrapper.getInitialAppProps((store)=>
     async ({Component,ctx}:any) => {
-    if (typeof window === 'undefined'){
-        store.dispatch({
-            type: 'LOGIN',
-            payload:{
-                userName: '卢本伟',
-                userIcon: '/img/lubenwei.jpg',
-                isLogin: true,
+        const {req} = ctx
+        if (typeof window === 'undefined'){
+            if (req?.session){
+                store.dispatch({
+                    type: 'LOGIN',
+                    payload:{
+                        userName: req.session?.userInfo?.userName,
+                        userIcon: req.session?.userInfo?.userIcon,
+                        isLogin: !!req.session?.userInfo,
+                    }
+                })
             }
-        })
-    }
+        }
     return {
             pageProps:{
                 ...(Component.getInitialProps ? await Component.getInitialProps(ctx) : Object.create(null)),

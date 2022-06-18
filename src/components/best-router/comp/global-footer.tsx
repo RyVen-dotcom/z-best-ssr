@@ -78,8 +78,8 @@ const GlobalFooter:React.FC = () => {
         ))}
       </div>
       <div className={classes.bottom}>
-        <div className={classes.bottomText}>最家家居©2013-2017公司版权所有 京ICP备080100-44备0000111000号</div>
-        <div className={classes.bottomText}>违法和不良信息举报电话：400-800-8200，本网站所列数据，除特殊说明，所有数据均出自我司实验室测试</div>
+        <div className={classes.bottomText}>最家©2021-2031 LiuWenRui个人学习成果展示 湘ICP备2022000430号-1</div>
+        <div className={classes.bottomText}>违法和不良信息举报电话：400-800-8200，本网站所列数据，除特殊说明，所有数据均为demo测试数据</div>
       </div>
     </>
   );
