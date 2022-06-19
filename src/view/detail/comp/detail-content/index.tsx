@@ -131,6 +131,7 @@ const DetailContent:React.FC<DetailContentProps> = ({
             {
               proList.map((item) => (
                 <Tooltip
+                  key={item.title}
                   color="#fff"
                   placement="bottom"
                   title={(
@@ -141,7 +142,6 @@ const DetailContent:React.FC<DetailContentProps> = ({
                 >
                   <ButtonBase
                     onClick={() => handleEvent(item.big)}
-                    key={item.title}
                     className={clsx(classes.imgBlock, { active: item.big === url })}
                   >
                     <img src={item.small} alt="商品缩略图" width={46} height={46} />
