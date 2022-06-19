@@ -39,7 +39,7 @@ export const proDetailList:ProDetailList = {
   proList: [
     {
       small: '/img/temp/prosmall01.jpg',
-      big: '/img/temp/proBig01.jpg',
+      big: '/img/temp/proBig05.jpg',
       title: '白瓷花瓶+20支快乐花',
     }, {
       small: '/img/temp/prosmall02.jpg',

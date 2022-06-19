@@ -6,6 +6,8 @@ import { ImgProps } from '../../../../server/mock/home-images';
 const useStyle = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.paper,
+    position: 'relative',
+    height: 332,
   },
   wrapper: {
     display: 'flex',
@@ -14,6 +16,9 @@ const useStyle = makeStyles((theme) => ({
   content: {
     width: 840,
     background: 'url(/img/bg.jpg) #fff repeat-x bottom',
+    position: 'absolute',
+    top: -50,
+    zIndex: 2,
   },
   inner: {
     display: 'flex',
