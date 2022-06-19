@@ -2,6 +2,9 @@ import { navList } from '../mock/nav-list';
 import { homeImages } from '../mock/home-images';
 import { paintImages } from '../mock/paint-images';
 import { SESSION_MAX_AGE } from '../config';
+import { proDetailList } from '../mock/pro-detail-list';
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 const Router = require('koa-router');
 
@@ -33,6 +36,15 @@ export default (server:any):void => {
     ctx.response.body = {
       status: 200,
       data: paintImages,
+    };
+    return false;
+  });
+  // 获取proDetail页图片
+  router.get('/proDetails/images', async (ctx: any) => {
+    ctx.response.status = 200;
+    ctx.response.body = {
+      status: 200,
+      data: proDetailList,
     };
     return false;
   });

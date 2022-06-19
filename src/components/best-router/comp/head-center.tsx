@@ -1,5 +1,5 @@
 import React from 'react';
-import { message, Modal } from 'antd';
+import { message, Modal, Tooltip } from 'antd';
 import { connect } from 'react-redux';
 import Image from 'next/image';
 import { ButtonBase, makeStyles, TextField } from '@material-ui/core';
@@ -139,9 +139,11 @@ const HeadCenter:React.FC<HeadCenterProps> = (props) => {
         <MyLink href="/" className={classes.iconLink}>
           <img className={classes.icon} src="/img/grzx.png" alt="个人中心.png" />
         </MyLink>
-        <MyLink href="/" className={classes.iconLink}>
-          <img className={classes.icon} src="/img/ewm.png" alt="二维码.png" />
-        </MyLink>
+        <Tooltip color="#fff" title={<img src="/img/smewm.png" alt="最家微信二维码" width={74} height={74} />}>
+          <MyLink href="/" className={classes.iconLink}>
+            <img className={classes.icon} src="/img/ewm.png" alt="二维码.png" />
+          </MyLink>
+        </Tooltip>
         <MyLink href="/" className={classes.iconLink}>
           <img className={classes.icon} src="/img/gwc.png" alt="购物车.png" />
         </MyLink>
@@ -154,6 +156,7 @@ const HeadCenter:React.FC<HeadCenterProps> = (props) => {
         onCancel={handleCancel}
         okText="确认"
         cancelText="取消"
+        width={300}
       >
         <p>是否退出登录？</p>
       </Modal>

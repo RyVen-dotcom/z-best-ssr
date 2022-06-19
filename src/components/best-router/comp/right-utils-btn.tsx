@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core';
 import { useScroll } from 'ahooks';
+import { Tooltip } from 'antd';
 import MyLink from '../../my-link';
 
 interface UtilBtnProps {
@@ -62,6 +63,12 @@ const useStyle = makeStyles((theme) => ({
     color: theme.palette.common.white,
     backgroundColor: '#a10000',
   },
+  tooltips: {
+    fontSize: 12,
+    padding: theme.spacing(0.25),
+    lineHeight: '18px',
+    color: '#333',
+  },
 }));
 
 const UtilBtn:React.FC<UtilBtnProps> = ({ children, label }) => {
@@ -96,11 +103,13 @@ const RightUtilsBtn:React.FC = () => {
           <img src="/img/gt1.png" alt="utilPic" />
         </UtilBtn>
       </MyLink>
-      <MyLink href="/index">
-        <UtilBtn label="联系客服">
-          <img src="/img/gt2.png" alt="utilPic" />
-        </UtilBtn>
-      </MyLink>
+      <Tooltip placement="left" color="#fff" title={<div className={classes.tooltips}>400-800-8200</div>}>
+        <MyLink href="/index">
+          <UtilBtn label="联系客服">
+            <img src="/img/gt2.png" alt="utilPic" />
+          </UtilBtn>
+        </MyLink>
+      </Tooltip>
       <MyLink href="/my-info">
         <UtilBtn label="个人中心">
           <img src="/img/gt3.png" alt="utilPic" />
