@@ -1,6 +1,7 @@
 import next from 'next';
 import api from './src/api';
 import { PORT, SESSION_MAX_AGE } from './config';
+import mongoConnect from './src/db';
 
 const Koa = require('koa');
 const koaBody = require('koa-body');
@@ -33,7 +34,7 @@ const ipAddress = getIpAddress();
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev, quiet: true });
 const handle = app.getRequestHandler();
-app.prepare().then(() => {
+app.prepare().then(async () => {
   const server = new Koa();
   server.proxy = true;
   server.use(koaBody({
@@ -42,14 +43,16 @@ app.prepare().then(() => {
       keepExtensions: true,
     },
   }));
-
   server.keys = ['some secret liu']; // 这个是配合signed属性的签名key
+
   const session_config = {
     key: 'test', /**  cookie的key。 (默认是 koa:sess) */
     maxAge: SESSION_MAX_AGE, /**  session 过期时间，以毫秒ms为单位计算 。 */
     rolling: true, /** 是否每次响应时刷新Session的有效期。(默认是 false) */
   };
   server.use(session(session_config, server));
+
+  await mongoConnect();
 
   api(server);
 

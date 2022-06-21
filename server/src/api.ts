@@ -1,8 +1,8 @@
 import { navList } from '../mock/nav-list';
-import { homeImages } from '../mock/home-images';
 import { paintImages } from '../mock/paint-images';
 import { SESSION_MAX_AGE } from '../config';
 import { proDetailList } from '../mock/pro-detail-list';
+import { queryHomeImages } from './homePage/controller/controllers';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -22,14 +22,7 @@ export default (server:any):void => {
   });
 
   // 获取首页图片
-  router.get('/home/images', async (ctx: any) => {
-    ctx.response.status = 200;
-    ctx.response.body = {
-      status: 200,
-      data: homeImages,
-    };
-    return false;
-  });
+  router.get('/home/images', queryHomeImages);
   // 获取paint页图片
   router.get('/paint/images', async (ctx: any) => {
     ctx.response.status = 200;
