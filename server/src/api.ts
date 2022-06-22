@@ -1,8 +1,8 @@
 import { paintImages } from '../mock/paint-images';
-import { SESSION_MAX_AGE } from '../config';
 import { proDetailList } from '../mock/pro-detail-list';
 import { queryHomeImages } from './homePage/controller/controllers';
 import { queryNavList } from './navList/controller/controllers';
+import { queryUsers } from './user/controller/controller';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -16,6 +16,20 @@ export default (server:any):void => {
 
   // 获取首页图片
   router.get('/home/images', queryHomeImages);
+  // 登录
+  router.get('/home/login', queryUsers);
+  // 退出登录
+  router.get('/home/logout', async (ctx: any) => {
+    ctx.session = null;
+    ctx.response.status = 200;
+    ctx.response.body = {
+      msg: 'logout success',
+      success: 'SUCCESS',
+      data: null,
+      status: 200,
+    };
+    return false;
+  });
   // 获取paint页图片
   router.get('/paint/images', async (ctx: any) => {
     ctx.response.status = 200;
@@ -34,39 +48,6 @@ export default (server:any):void => {
     };
     return false;
   });
-  // 登录
-  router.get('/home/login', async (ctx: any) => {
-    const { session } = ctx;
-    const data = {
-      userName: '卢本伟',
-      userIcon: '/img/lubenwei.jpg',
-    };
-    session.userInfo = {
-      userName: data.userName,
-      userIcon: data.userIcon,
-      expiresIn: Date.now() + SESSION_MAX_AGE,
-    };
 
-    ctx.response.status = 200;
-    ctx.response.body = {
-      msg: 'login success',
-      success: 'SUCCESS',
-      data,
-      status: 200,
-    };
-    return false;
-  });
-  // 退出登录
-  router.get('/home/logout', async (ctx: any) => {
-    ctx.session = null;
-    ctx.response.status = 200;
-    ctx.response.body = {
-      msg: 'logout success',
-      success: 'SUCCESS',
-      data: null,
-      status: 200,
-    };
-    return false;
-  });
   server.use(router.routes());
 };
