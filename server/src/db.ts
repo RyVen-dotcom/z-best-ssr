@@ -1,8 +1,10 @@
+import { DATABASE_URL } from '../config';
+
 const mongoose = require('mongoose');
 
 const mongoConnect = async () => {
   await mongoose
-    .connect('mongodb://127.0.0.1:27017/zblite')
+    .connect(DATABASE_URL)
     .then(() => {
       console.log('数据库连接成功');
     })
