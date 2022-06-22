@@ -4,9 +4,9 @@ import { makeStyles } from '@material-ui/core';
 import { useRouter } from 'next/router';
 import MyTabs from '../../my-tabs';
 import { getNavGoodsImages } from './service';
-import { NavList } from '../../../../server/mock/nav-list';
 import MyLink from '../../my-link';
 import SlideDown from './slide-down';
+import { NavList } from '../../../../server/mock/nav-list';
 
 const labelArr = ['首页', '所有商品', '装饰摆件', '布艺软饰', '墙式壁挂', '蜡意香薰', '创意家居'];
 
@@ -133,18 +133,18 @@ const NavBar:React.FC = () => {
         value === 1 ? (
           <SlideDown>
             {
-                navList.map((item) => (
-                  <MyLink className={classes.picLink} key={item.label} href={item.url}>
-                    <div className={classes.navItem}>
-                      <div className={classes.img}>
-                        <Image src={item.imageUrl} width={162} height={200} />
-                      </div>
-                      <div className={classes.navText}>
-                        {item.label}
-                      </div>
+              navList?.length ? navList.map((item) => (
+                <MyLink className={classes.picLink} key={item.label} href={item.url}>
+                  <div className={classes.navItem}>
+                    <div className={classes.img}>
+                      <Image src={item.imageUrl} width={162} height={200} />
                     </div>
-                  </MyLink>
-                ))
+                    <div className={classes.navText}>
+                      {item.label}
+                    </div>
+                  </div>
+                </MyLink>
+              )) : null
               }
           </SlideDown>
         ) : null

@@ -1,8 +1,8 @@
-import { navList } from '../mock/nav-list';
 import { paintImages } from '../mock/paint-images';
 import { SESSION_MAX_AGE } from '../config';
 import { proDetailList } from '../mock/pro-detail-list';
 import { queryHomeImages } from './homePage/controller/controllers';
+import { queryNavList } from './navList/controller/controllers';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -12,14 +12,7 @@ const router = new Router();
 
 export default (server:any):void => {
   // 获取navBar图片List
-  router.get('/nav/goods/images', async (ctx: any) => {
-    ctx.response.status = 200;
-    ctx.response.body = {
-      status: 200,
-      data: navList,
-    };
-    return false;
-  });
+  router.get('/nav/goods/images', queryNavList);
 
   // 获取首页图片
   router.get('/home/images', queryHomeImages);
